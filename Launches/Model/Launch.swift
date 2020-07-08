@@ -10,12 +10,12 @@ import Foundation
 
 struct Launch: Codable {
     struct Links: Codable {
-        
+        let wikipedia: String?
     }
     
     let name: String
     let flightNumber: Int
-    let details: String
-    let dateUtc: Date
+    let details: String?
+    let dateUtc: String
     let links: Links
 }

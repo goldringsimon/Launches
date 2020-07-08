@@ -17,9 +17,19 @@ class LaunchesVC: UIViewController {
 
         view.backgroundColor = .systemPink
         configureCollectionView()
+        
+        NetworkManager.shared.getLaunches { result in
+            switch result {
+                
+            case .success(let launches):
+                print(launches)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     private func configureCollectionView() {
-        collectionView = UICollectionView()
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
     }
 }
