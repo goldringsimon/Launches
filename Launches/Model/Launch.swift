@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct Launch: Codable {
+struct Launch: Codable, Hashable {
+    static func == (lhs: Launch, rhs: Launch) -> Bool {
+        return lhs.flightNumber == rhs.flightNumber
+    }
+    
     struct Links: Codable {
         let wikipedia: String?
     }
@@ -18,4 +22,8 @@ struct Launch: Codable {
     let details: String?
     let dateUtc: String
     let links: Links
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(flightNumber)
+    }
 }

@@ -21,7 +21,6 @@ class NetworkManager {
         let url = URL(string: "https://api.spacexdata.com/v4/launches")!
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//            guard let self = self else { return }
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 completed(.failure(.invalidResponse))
                 return
