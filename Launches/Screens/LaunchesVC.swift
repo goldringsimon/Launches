@@ -63,7 +63,6 @@ class LaunchesVC: UIViewController {
             switch result {
                 
             case .success(let launches):
-                print(launches)
                 DispatchQueue.main.async {
                     self.updateData(with: launches)
                 }

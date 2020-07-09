@@ -14,6 +14,12 @@ struct Launch: Codable, Hashable {
     }
     
     struct Links: Codable {
+        struct Patch: Codable {
+            let small: String?
+            let large: String?
+        }
+        
+        let patch: Patch
         let wikipedia: String?
     }
     

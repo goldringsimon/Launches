@@ -6,7 +6,7 @@
 //  Copyright © 2020 Simon Goldring. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum NetworkError: Error {
     case invalidResponse
@@ -16,6 +16,8 @@ enum NetworkError: Error {
 
 class NetworkManager {
     static let shared = NetworkManager()
+    
+    let cache = NSCache<NSString, UIImage>()
     
     func getLaunches(completed: @escaping (Result<[Launch],NetworkError>) -> Void) {
         let url = URL(string: "https://api.spacexdata.com/v4/launches")!
@@ -40,6 +42,36 @@ class NetworkManager {
             }
         }
         
+        task.resume()
+    }
+    
+    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
+        let cacheKey = NSString(string: urlString)
+        
+        if let image = cache.object(forKey: cacheKey) {
+            completed(image)
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            completed(nil)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200,
+                let data = data,
+                let image = UIImage(data: data) else {
+                    completed(nil)
+                    return
+            }
+            
+            self.cache.setObject(image, forKey: cacheKey)
+            
+            completed(image)
+            return
+        }
         task.resume()
     }
 }
