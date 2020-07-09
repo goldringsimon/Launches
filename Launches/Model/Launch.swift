@@ -27,6 +27,7 @@ struct Launch: Codable, Hashable {
     let flightNumber: Int
     let details: String?
     let dateUtc: String
+    let success: Bool?
     let links: Links
     
     func hash(into hasher: inout Hasher) {

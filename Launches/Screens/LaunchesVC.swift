@@ -24,6 +24,8 @@ class LaunchesVC: UIViewController {
     
     private func configureViewController() {
         view.backgroundColor = .systemBackground
+        title = "Launches"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func configureCollectionView() {
@@ -81,5 +83,11 @@ class LaunchesVC: UIViewController {
 }
 
 extension LaunchesVC: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let launch = dataSource.itemIdentifier(for: indexPath) {
+            let destVC = LaunchInfoVC(with: launch)
+            let navController = UINavigationController(rootViewController: destVC)
+            present(navController, animated: true)
+        }
+    }
 }

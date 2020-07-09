@@ -16,6 +16,10 @@
 		F4A14E9B24B65C4A001FEC34 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A14E9A24B65C4A001FEC34 /* NetworkManager.swift */; };
 		F4F57BFC24B7225D009D1842 /* LaunchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F57BFB24B7225D009D1842 /* LaunchCell.swift */; };
 		F4F57BFF24B72BB1009D1842 /* PatchImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F57BFE24B72BB1009D1842 /* PatchImageView.swift */; };
+		F4F57C0124B73B2A009D1842 /* LaunchInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F57C0024B73B2A009D1842 /* LaunchInfoVC.swift */; };
+		F4F57C0424B763B9009D1842 /* SubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F57C0324B763B9009D1842 /* SubtitleLabel.swift */; };
+		F4F57C0624B76A12009D1842 /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F57C0524B76A12009D1842 /* BodyLabel.swift */; };
+		F4F57C0824B7AA40009D1842 /* SuccessLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F57C0724B7AA40009D1842 /* SuccessLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		F4A14E9A24B65C4A001FEC34 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F4F57BFB24B7225D009D1842 /* LaunchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCell.swift; sourceTree = "<group>"; };
 		F4F57BFE24B72BB1009D1842 /* PatchImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchImageView.swift; sourceTree = "<group>"; };
+		F4F57C0024B73B2A009D1842 /* LaunchInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInfoVC.swift; sourceTree = "<group>"; };
+		F4F57C0324B763B9009D1842 /* SubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleLabel.swift; sourceTree = "<group>"; };
+		F4F57C0524B76A12009D1842 /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
+		F4F57C0724B7AA40009D1842 /* SuccessLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				F4A14E9724B65C13001FEC34 /* LaunchesVC.swift */,
+				F4F57C0024B73B2A009D1842 /* LaunchInfoVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -110,6 +119,7 @@
 		F4F57BF924B72219009D1842 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				F4F57C0224B76321009D1842 /* Labels */,
 				F4F57BFD24B72B82009D1842 /* ImageViews */,
 				F4F57BFA24B72247009D1842 /* Cells */,
 			);
@@ -130,6 +140,16 @@
 				F4F57BFE24B72BB1009D1842 /* PatchImageView.swift */,
 			);
 			path = ImageViews;
+			sourceTree = "<group>";
+		};
+		F4F57C0224B76321009D1842 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				F4F57C0324B763B9009D1842 /* SubtitleLabel.swift */,
+				F4F57C0524B76A12009D1842 /* BodyLabel.swift */,
+				F4F57C0724B7AA40009D1842 /* SuccessLabel.swift */,
+			);
+			path = Labels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,10 +223,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4A14E9B24B65C4A001FEC34 /* NetworkManager.swift in Sources */,
+				F4F57C0424B763B9009D1842 /* SubtitleLabel.swift in Sources */,
+				F4F57C0824B7AA40009D1842 /* SuccessLabel.swift in Sources */,
+				F4F57C0624B76A12009D1842 /* BodyLabel.swift in Sources */,
 				F4A14E8024B65900001FEC34 /* AppDelegate.swift in Sources */,
 				F4F57BFC24B7225D009D1842 /* LaunchCell.swift in Sources */,
 				F4F57BFF24B72BB1009D1842 /* PatchImageView.swift in Sources */,
 				F4A14E9524B65B16001FEC34 /* Launch.swift in Sources */,
+				F4F57C0124B73B2A009D1842 /* LaunchInfoVC.swift in Sources */,
 				F4A14E8224B65900001FEC34 /* SceneDelegate.swift in Sources */,
 				F4A14E9824B65C13001FEC34 /* LaunchesVC.swift in Sources */,
 			);
