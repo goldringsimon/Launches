@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4093F8A24B8B63400D5E554 /* LinksCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4093F8924B8B63400D5E554 /* LinksCardVC.swift */; };
+		F4093F8E24B8B6C400D5E554 /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4093F8D24B8B6C400D5E554 /* LinkButton.swift */; };
 		F4A14E8024B65900001FEC34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A14E7F24B65900001FEC34 /* AppDelegate.swift */; };
 		F4A14E8224B65900001FEC34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A14E8124B65900001FEC34 /* SceneDelegate.swift */; };
 		F4A14E8924B65901001FEC34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4A14E8824B65901001FEC34 /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F4093F8924B8B63400D5E554 /* LinksCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCardVC.swift; sourceTree = "<group>"; };
+		F4093F8D24B8B6C400D5E554 /* LinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
 		F4A14E7C24B65900001FEC34 /* Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Launches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A14E7F24B65900001FEC34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4A14E8124B65900001FEC34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F4093F8824B8B61A00D5E554 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F4093F8924B8B63400D5E554 /* LinksCardVC.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F4093F8B24B8B6A800D5E554 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				F4093F8D24B8B6C400D5E554 /* LinkButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		F4A14E7324B65900001FEC34 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +139,8 @@
 		F4F57BF924B72219009D1842 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				F4093F8B24B8B6A800D5E554 /* Buttons */,
+				F4093F8824B8B61A00D5E554 /* View Controllers */,
 				F4F57C0224B76321009D1842 /* Labels */,
 				F4F57BFD24B72B82009D1842 /* ImageViews */,
 				F4F57BFA24B72247009D1842 /* Cells */,
@@ -222,6 +244,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4093F8A24B8B63400D5E554 /* LinksCardVC.swift in Sources */,
+				F4093F8E24B8B6C400D5E554 /* LinkButton.swift in Sources */,
 				F4A14E9B24B65C4A001FEC34 /* NetworkManager.swift in Sources */,
 				F4F57C0424B763B9009D1842 /* SubtitleLabel.swift in Sources */,
 				F4F57C0824B7AA40009D1842 /* SuccessLabel.swift in Sources */,

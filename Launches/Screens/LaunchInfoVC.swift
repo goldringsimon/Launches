@@ -16,6 +16,9 @@ class LaunchInfoVC: UIViewController {
     var detailsLabel = BodyLabel(textAlignment: .natural)
     var successLabel = SuccessLabel(frame: .zero)
     
+    var linksCardView = UIView(frame: .zero)
+    var linksCardVC = LinksCardVC()
+    
     var launch: Launch!
     
     init(with launch: Launch) {
@@ -35,6 +38,7 @@ class LaunchInfoVC: UIViewController {
         configureFlightNumberLabel()
         configureDateLabel()
         configureSuccessLabel()
+        configureLinksCard()
         layoutUI()
     }
     
@@ -79,14 +83,25 @@ class LaunchInfoVC: UIViewController {
         if let launchDate = launchDate {
             dateLabel.text = formatter.string(from: launchDate)
         }
-        
-//        dateLabel.text = launch.dateUtc
     }
     
     private func configureSuccessLabel() {
         view.addSubview(successLabel)
         
         successLabel.set(with: launch.success)
+    }
+    
+    private func configureLinksCard() {
+        view.addSubview(linksCardView)
+        linksCardView.translatesAutoresizingMaskIntoConstraints = false
+        add(childVC: LinksCardVC(), to: linksCardView)
+    }
+    
+    private func add(childVC: UIViewController, to containerView: UIView) {
+        addChild(childVC)
+        containerView.addSubview(childVC.view)
+        childVC.view.frame = containerView.bounds
+        childVC.didMove(toParent: self)
     }
     
     private func layoutUI() {
@@ -108,15 +123,20 @@ class LaunchInfoVC: UIViewController {
             dateLabel.centerYAnchor.constraint(equalTo: patchImageView.centerYAnchor),
             dateLabel.heightAnchor.constraint(equalToConstant: 24),
             
-            detailsLabel.leadingAnchor.constraint(equalTo: patchImageView.leadingAnchor),
-            detailsLabel.topAnchor.constraint(equalTo: patchImageView.bottomAnchor, constant: padding),
-            detailsLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            //detailsLabel.heightAnchor.constraint(equalToConstant: 250)
-            
             successLabel.bottomAnchor.constraint(equalTo: patchImageView.bottomAnchor),
             successLabel.leadingAnchor.constraint(equalTo: patchImageView.trailingAnchor, constant: padding),
             successLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            successLabel.heightAnchor.constraint(equalToConstant: 18)
+            successLabel.heightAnchor.constraint(equalToConstant: 18),
+            
+            linksCardView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            linksCardView.topAnchor.constraint(equalTo: patchImageView.bottomAnchor, constant: padding),
+            linksCardView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            linksCardView.heightAnchor.constraint(equalToConstant: 120),
+            
+            detailsLabel.leadingAnchor.constraint(equalTo: patchImageView.leadingAnchor),
+            detailsLabel.topAnchor.constraint(equalTo: linksCardView.bottomAnchor, constant: padding),
+            detailsLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding)
+            //detailsLabel.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
     
