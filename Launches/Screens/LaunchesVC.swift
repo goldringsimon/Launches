@@ -8,16 +8,26 @@
 
 import UIKit
 
+typealias Section = Int
+
 class LaunchesVC: UIViewController {
     
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Int, Launch>!
-
+    var dataSource: UICollectionViewDiffableDataSource<Section, Launch>!
+    
+    var launches: [Launch] = [] {
+        didSet {
+            filteredLaunches = launches
+        }
+    }
+    var filteredLaunches: [Launch] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureViewController()
         configureCollectionView()
+        configureSearchController()
         configureDataSource()
         getLaunches()
     }
@@ -50,8 +60,16 @@ class LaunchesVC: UIViewController {
         return flowLayout
     }
     
+    private func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search for a launch"
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+    }
+    
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, Launch>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, launch) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, Launch>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, launch) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LaunchCell.reuseID, for: indexPath) as! LaunchCell
             cell.set(for: launch)
             return cell
@@ -66,7 +84,8 @@ class LaunchesVC: UIViewController {
                 
             case .success(let launches):
                 DispatchQueue.main.async {
-                    self.updateData(with: launches)
+                    self.launches = launches
+                    self.updateData()
                 }
             case .failure(let error):
                 print(error)
@@ -74,10 +93,18 @@ class LaunchesVC: UIViewController {
         }
     }
     
-    private func updateData(with launches: [Launch]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, Launch>()
+    private func updateData() {
+        /*let groupedLaunches = Dictionary(grouping: launches) { $0.success }
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Launch>()
+        snapshot.appendSections([false])
+        snapshot.appendItems(groupedLaunches[false] ?? [])
+        snapshot.appendSections([true])
+        snapshot.appendItems(groupedLaunches[true] ?? [])*/
+        
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Launch>()
         snapshot.appendSections([0])
-        snapshot.appendItems(launches)
+        snapshot.appendItems(filteredLaunches)
         dataSource.apply(snapshot)
     }
 }
@@ -89,5 +116,20 @@ extension LaunchesVC: UICollectionViewDelegate {
             let navController = UINavigationController(rootViewController: destVC)
             present(navController, animated: true)
         }
+    }
+}
+
+class DataSource: UICollectionViewDiffableDataSource<Section, Launch> {
+    
+}
+
+extension LaunchesVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let filter = searchController.searchBar.text, !filter.isEmpty {
+            filteredLaunches = launches.filter({ $0.name.lowercased().contains(filter.lowercased()) })
+        } else {
+            filteredLaunches = launches
+        }
+        updateData()
     }
 }

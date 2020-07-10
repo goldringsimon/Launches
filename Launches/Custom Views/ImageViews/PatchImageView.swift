@@ -23,7 +23,7 @@ class PatchImageView: UIImageView {
 //        layer.cornerRadius = 10
         clipsToBounds = true
         contentMode = .scaleAspectFit
-//        image = placeholderImage!
+        image = UIImage(systemName: "tortoise")
         translatesAutoresizingMaskIntoConstraints = false
     }
     
